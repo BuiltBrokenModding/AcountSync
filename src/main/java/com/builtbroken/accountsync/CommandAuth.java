@@ -1,5 +1,7 @@
 package com.builtbroken.accountsync;
 
+import com.builtbroken.jlib.helpers.MathHelper;
+import com.builtbroken.jlib.lang.EnglishLetters;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -107,7 +109,7 @@ public class CommandAuth extends CommandBase
                 }
 
                 String query = " insert into " + Mod.table + " (time, username, uuid, token, ip) values (?, ?, ?, ?, ?)";
-                String token = "token";
+                String token = getRandomString();
                 try
                 {
                     PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -150,5 +152,35 @@ public class CommandAuth extends CommandBase
         {
             sender.addChatMessage(new ChatComponentText("This command does not work from the console"));
         }
+    }
+
+    /**
+     * Generates a random string containing numbers and letters between a length of 10 - 30
+     * 1,264,020,397,516,800 to 2,730,903,391,116,338,302,840,472,139,202,560,000,000 possible permutations
+     * using this method. Not including the number of permutation if capital letters are considered.
+     *
+     * @return new String
+     */
+    protected String getRandomString()
+    {
+        String string = "";
+        //Generate random default string
+        int[] l = MathHelper.generateRandomIntArray(MathHelper.rand, EnglishLetters.values().length + 9, 10 + MathHelper.rand.nextInt(20));
+        for (int i : l)
+        {
+            if (i < 10)
+            {
+                string += i;
+            }
+            else if (MathHelper.rand.nextBoolean())
+            {
+                string += EnglishLetters.values()[i - 10].name();
+            }
+            else
+            {
+                string += EnglishLetters.values()[i - 10].name().toLowerCase();
+            }
+        }
+        return string;
     }
 }

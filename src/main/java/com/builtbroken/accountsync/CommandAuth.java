@@ -43,7 +43,7 @@ public class CommandAuth extends CommandBase
             }
             catch (SQLException e)
             {
-                ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to connect to database! Contact an admins about this problem."));
+                ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to connect to database! Contact an admin about this problem."));
                 e.printStackTrace();
                 return;
             }
@@ -73,7 +73,7 @@ public class CommandAuth extends CommandBase
                 }
                 catch (SQLException e)
                 {
-                    ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to find or create database tables! Contact an admins about this problem."));
+                    ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to find or create database tables! Contact an admin about this problem."));
                     e.printStackTrace();
                     return;
                 }
@@ -130,7 +130,7 @@ public class CommandAuth extends CommandBase
                     }
                     else
                     {
-                        ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to insertion into database! Contact an admins about this problem."));
+                        ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to insertion into database! Contact an admin about this problem."));
                         e.printStackTrace();
                     }
                 }
@@ -141,11 +141,9 @@ public class CommandAuth extends CommandBase
                 }
                 catch (SQLException e)
                 {
-                    ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to close connection to database! Contact an admins about this problem."));
+                    ((EntityPlayerMP) sender).addChatComponentMessage(new ChatComponentText("Failed to close connection to database! Contact an admin about this problem."));
                     e.printStackTrace();
                 }
-
-
             }
         }
         else

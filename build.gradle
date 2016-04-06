@@ -31,6 +31,7 @@ apply plugin: 'jacoco'
 
 dependencies 
 {
+    compile "com.builtbroken.codinglib:CodingLib:0.0.3b26:deobf"
     testCompile 'junit:junit:4.11'
     compile "dev.builtbroken.voltzengine:VoltzEngine:1.7.10-0.+:deobf-dev"
 }
